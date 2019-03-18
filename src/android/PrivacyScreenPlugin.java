@@ -29,9 +29,16 @@ import android.os.Bundle;
 public class PrivacyScreenPlugin extends CordovaPlugin {
 
   @Override
-  public void initialize(CordovaInterface cordova, CordovaWebView webView) {
-    super.initialize(cordova, webView);
+  public void onPause(boolean multitasking) {
+    super.onPause(multitasking);
     Activity activity = this.cordova.getActivity();
-    activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_SECURE);
+    activity.getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE,WindowManager.LayoutParams.FLAG_SECURE);
+  }
+
+  @Override
+  public void onResume(boolean multitasking) {
+    super.onResume(multitasking);
+    Activity activity = this.cordova.getActivity();
+    activity.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_SECURE);
   }
 }
