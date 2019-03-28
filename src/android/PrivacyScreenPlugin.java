@@ -31,7 +31,9 @@ public class PrivacyScreenPlugin extends CordovaPlugin {
   @Override
   public void initialize(CordovaInterface cordova, CordovaWebView webView) {
     super.initialize(cordova, webView);
-    Activity activity = this.cordova.getActivity();
-    activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_SECURE);
+
+    // FIXME: It has been intentionally disabled due to screenshots issue
+    // Activity activity = this.cordova.getActivity();
+    // activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_SECURE);
   }
 }
